@@ -1,6 +1,6 @@
 class Main
   get '/' do
-    haml :home, :layout => :layout
+    haml :home
   end
 end
 
