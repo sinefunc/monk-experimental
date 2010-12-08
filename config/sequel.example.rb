@@ -12,7 +12,11 @@ end
 #   m.set :sequel, "mysql://root@localhost/db"
 # end
 
+Main.set :db, Sequel.connect(ENV['DATABASE_URL'] || Main.sequel)
+Sequel.extension :inflector
+
 # More examples:
 #
 #   m.set :sequel, "mysql://root:password@localhost/db_name"
 #   m.set :sequel, "postgres://user:password@localhost/db_name"
+
