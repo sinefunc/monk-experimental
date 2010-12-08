@@ -17,6 +17,7 @@ class Main
       ].join("\n")
 
     end
+
     # Draws a checkbox with a hidden field.
     def checkbox(name, value=nil, options={})
       selected = ''

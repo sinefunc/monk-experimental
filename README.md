@@ -54,4 +54,4 @@ Uses JsFiles (to compress JS files).
 
  * Uses AgentSniff to do browser detection. The HTML class is automatically set.
 
- * Lots of new helpers based on `sinatra-support`.
+ * A couple of new helpers have been added.
