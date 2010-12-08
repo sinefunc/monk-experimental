@@ -1,3 +1,6 @@
+My project
+==========
+
 Set up RVM
 
     rvm --rvmrc --create 1.9.2@myproject
