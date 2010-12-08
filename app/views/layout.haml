@@ -1,0 +1,18 @@
+!!! 5
+%html{:class => browser.body_class}
+  - unless request.xhr?
+    %head
+      %meta(charset='UTF-8')
+      %title!= title
+      %link(rel='stylesheet' media='screen' type='text/css' href='/css/style.css')
+
+  %body
+    != yield
+
+    - unless request.xhr?
+      != jquery
+      - if (settings.production? or params[:compress]) and params[:no_compress].nil?
+        %script{:type => 'text/javascript', :src => '/js/app.js?%s' % [settings.js_files.mtime.to_i]}
+      - else
+        != settings.js_files.to_html
+
