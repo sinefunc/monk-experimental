@@ -7,8 +7,6 @@ require "sinatra/content_for"
 require "jsfiles"
 require "user_agent"
 
-Dir["./lib/**/*.rb"].each { |rb| require rb }
-
 class Main < Sinatra::Base
   set      :root, lambda { |*args| File.join(File.dirname(__FILE__), *args) }
   set      :views, root('app', 'views')
@@ -32,7 +30,7 @@ class Main < Sinatra::Base
   end
 end
 
-Dir["./app/**/*.rb"].each { |rb| require rb }
+Dir["./{lib,app/**}/*.rb"].each { |rb| require rb }
 
 Main.set :port, ENV['PORT'].to_i  unless ENV['PORT'].nil?
 Main.run!  if __FILE__ == $0
