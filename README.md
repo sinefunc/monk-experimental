@@ -27,7 +27,10 @@ The skeleton is based on [http://github.com/monk/experimental](Monk Experimental
 
 ### ORM-less
 
-The skeleton comes with no ORM. Add it yourself!
+The skeleton comes with no ORM by default.
+
+However, there are sample config files in `config/` for Ohm and Sequel which has
+instructions on how to set them up.
 
 ### Sinatra-style configuration
 
