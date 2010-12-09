@@ -30,4 +30,4 @@ private
   end
 end
 
-Dir['./app/**/*.thor'].each { |thor| load thor }
+Dir['./lib/thors/**/*.thor'].each { |thor| load thor }
