@@ -1,34 +1,38 @@
 class Main
   module JsCdnHelpers
-    def jquery(version='1.4.4', fallback_url='/js/jquery.min.js')
-      google_cdn_js "jquery/#{version}/jquery.min.js", fallback_url
+    GOOGLE_CDN = "http://ajax.googleapis.com/ajax/libs"
+
+    def jquery(version='1.4.4')
+      cdn_js :remote    => "#{GOOGLE_CDN}/jquery/#{version}/jquery.min.js",
+             :fallback  => '/js/jquery.min.js',
+             :test      => 'window.jQuery'
     end
 
-    def jquery_ui(version='1.8.5', fallback_url='/js/jquery-ui.min.js')
-      google_cdn_js "jqueryui/#{version}/jquery-ui.min.js", fallback_url
+    def jquery_ui(version='1.8.5')
+      cdn_js :remote   => "#{GOOGLE_CDN}/jqueryui/#{version}/jquery-ui.min.js",
+             :fallback => '/js/jquery-ui.min.js',
+             :test     => 'window.jQuery.fn.sortable'
     end
 
-    def modernizr(version='1.5.0', fallback_url='/js/modernizr-min.js')
-      remote_url = "http://cachedcommons.org/cache/modernizr/#{version}/javascripts/modernizr-min.js"
-      cdn_js remote_url, fallback_url
+    def modernizr(version='1.5.0')
+      cdn_js :remote   => "http://cachedcommons.org/cache/modernizr/#{version}/javascripts/modernizr-min.js",
+             :fallback => '/js/modernizr-min.js',
+             :test     => "window.Modernizr"
     end
 
-    def dd_belatedpng(version='0.0.8', fallback_url='/js/dd-belated-png-min.js')
-      remote_url = "http://cachedcommons.org/cache/dd-belated-png/#{version}/javascripts/dd-belated-png-min.js"
-      cdn_js remote_url, fallback_url
+    def dd_belatedpng(version='0.0.8')
+      cdn_js :remote   => "http://cachedcommons.org/cache/dd-belated-png/#{version}/javascripts/dd-belated-png-min.js",
+             :fallback => '/js/dd-belated-png-min.js',
+             :test     => "window.DD_belatedPNG"
     end
 
-    def google_cdn_js(remote_path, fallback_url)
-      remote_url = "http://ajax.googleapis.com/ajax/libs/#{remote_path}"
-      cdn_js remote_url, fallback_url
-    end
-
-    def cdn_js(remote_url, fallback_url)
+    def cdn_js(opts={})
       if settings.production?
-        "<script type='text/javascript' src=\"#{remote_url}\"></script>"+
-        "<script>!window.jQuery && document.write('<script src=\"#{fallback_url}\"><\\/script>')</script>"
+        str =  "<script type='text/javascript' src=\"#{opts[:remote]}\"></script>"
+        str += "<script>!#{opts[:test]} && document.write('<script src=\"#{opts[:fallback]}\"><\\/script>')</script>"  unless opts[:test].nil?
+        str
       else
-        "<script type='text/javascript' src='#{fallback_url}'></script>"
+        "<script type='text/javascript' src='#{opts[:fallback]}'></script>"
       end
     end
   end
