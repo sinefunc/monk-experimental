@@ -1,11 +1,16 @@
 class Main
   module JsCdnHelpers
-    def jquery(version='1.4.4', fallback_url='/js/jquery.js')
+    def jquery(version='1.4.4', fallback_url='/js/jquery.min.js')
       google_cdn_js "jquery/#{version}/jquery.min.js", fallback_url
     end
 
-    def jquery_ui(version='1.8.5', fallback_url='/js/jqueryui.js')
+    def jquery_ui(version='1.8.5', fallback_url='/js/jquery-ui.min.js')
       google_cdn_js "jqueryui/#{version}/jquery-ui.min.js", fallback_url
+    end
+
+    def modernizr(version='1.5.0', fallback_url='/js/modernizr-min.js')
+      remote_url = "http://cachedcommons.org/cache/modernizr/#{version}/javascripts/modernizr-min.js"
+      cdn_js remote_url, fallback_url
     end
 
     def google_cdn_js(remote_path, fallback_url)
