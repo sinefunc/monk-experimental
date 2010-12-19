@@ -1,29 +1,30 @@
 class Main
   module JsCdnHelpers
-    GOOGLE_CDN = "http://ajax.googleapis.com/ajax/libs"
+    GOOGLE_CDN = "http://ajax.googleapis.com/ajax/libs/%s"
+    CC_CDN     = "http://cachedcommons.org/cache/%s/javascripts/%s"
 
     def jquery(version='1.4.4')
-      cdn_js :remote    => "#{GOOGLE_CDN}/jquery/#{version}/jquery.min.js",
+      cdn_js :remote    => GOOGLE_CDN % ["jquery/#{version}/jquery.min.js"],
              :fallback  => '/js/jquery.min.js',
              :test      => 'window.jQuery'
     end
 
     def jquery_ui(version='1.8.5')
-      cdn_js :remote   => "#{GOOGLE_CDN}/jqueryui/#{version}/jquery-ui.min.js",
+      cdn_js :remote   => GOOGLE_CDN % ["jqueryui/#{version}/jquery-ui.min.js"],
              :fallback => '/js/jquery-ui.min.js',
              :test     => 'window.jQuery.fn.sortable'
     end
 
     def modernizr(version='1.5.0')
-      cdn_js :remote   => "http://cachedcommons.org/cache/modernizr/#{version}/javascripts/modernizr-min.js",
+      cdn_js :remote   => CC_CDN % ["modernizr/#{version}", 'modernizr-min.js'],
              :fallback => '/js/modernizr-min.js',
-             :test     => "window.Modernizr"
+             :test     => 'window.Modernizr'
     end
 
     def dd_belatedpng(version='0.0.8')
-      cdn_js :remote   => "http://cachedcommons.org/cache/dd-belated-png/#{version}/javascripts/dd-belated-png-min.js",
+      cdn_js :remote   => CC_CDN % ["dd-belated-png/#{version}", 'dd-belated-png-min.js'],
              :fallback => '/js/dd-belated-png-min.js',
-             :test     => "window.DD_belatedPNG"
+             :test     => 'window.DD_belatedPNG'
     end
 
     def cdn_js(opts={})
