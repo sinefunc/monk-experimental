@@ -13,6 +13,11 @@ class Main
       cdn_js remote_url, fallback_url
     end
 
+    def dd_belatedpng(version='0.0.8', fallback_url='/js/dd-belated-png-min.js')
+      remote_url = "http://cachedcommons.org/cache/dd-belated-png/#{version}/javascripts/dd-belated-png-min.js"
+      cdn_js remote_url, fallback_url
+    end
+
     def google_cdn_js(remote_path, fallback_url)
       remote_url = "http://ajax.googleapis.com/ajax/libs/#{remote_path}"
       cdn_js remote_url, fallback_url

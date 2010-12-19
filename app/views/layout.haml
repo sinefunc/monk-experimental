@@ -22,6 +22,12 @@
 
     - unless request.xhr?
       != jquery
+
+      != "<!--[if lt IE 7 ]>"
+      != dd_belatedpng
+      %script!= "DD_belatedPNG.fix('img, .png_bg');"
+      != "<![endif]-->"
+
       - if (settings.production? or params[:compress]) and params[:no_compress].nil?
         %script{:type => 'text/javascript', :src => '/js/app.js?%s' % [settings.js_files.mtime.to_i]}
       - else
