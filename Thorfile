@@ -16,7 +16,8 @@ class Monk < Thor
 
   desc "irb", "Starts a console."
   def irb(env=ENV['RACK_ENV'] || 'development')
-    exec "env RACK_ENV=#{env} irb -r./init.rb"
+    irb = ENV['IRB_PATH'] || 'irb'
+    exec "env RACK_ENV=#{env} #{irb} -r./init.rb"
   end
 
 private
