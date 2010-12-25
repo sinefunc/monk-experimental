@@ -17,8 +17,7 @@ class Main
 
     def modernizr(version='1.5.0')
       cdn_js :remote   => CC_CDN % ["modernizr/#{version}", 'modernizr-min.js'],
-             :fallback => '/js/modernizr-min.js',
-             :test     => 'window.Modernizr'
+             :fallback => '/js/modernizr-min.js'
     end
 
     def dd_belatedpng(version='0.0.8')
