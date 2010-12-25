@@ -15,7 +15,7 @@ class Main
     end
 
     def content_for!(key, &blk)
-      content_blocks[key.to_sym] = [ &blk ]
+      content_blocks[key.to_sym] = [ blk ]
     end
   end
 
