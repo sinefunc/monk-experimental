@@ -36,8 +36,6 @@ instructions on how to set them up.
 
 The bootstrapper loads all of `config/*.rb`, starting with the default files (like `haml.default.rb`).
 
- * Any example files are not loaded (eg, `config/scss.example.rb`).
- * Anything that is not `*.default.rb` or `*.example.rb` are *not* under version control.
  * To set settings: `Main.set :name, "Hello"`
  * To retrieve settings: `settings.name`
 

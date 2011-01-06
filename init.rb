@@ -20,9 +20,7 @@ class Main < Sinatra::Base
   helpers  Sinatra::UserAgentHelpers  # agentsniff
 
   # Load all, but load defaults first
-  Dir[root('config', '{*.defaults,*}.rb')].uniq.each { |f|
-    load f unless f.include?('.example.')
-  }
+  Dir[root('config', '{*.defaults,*}.rb')].uniq.each { |f| load f }
 
   configure :development do
     require 'pistol'
