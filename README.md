@@ -17,6 +17,18 @@ Run tests
 
     monk test
 
+Installing monk
+---------------
+
+Creating a project from scratch? Install `monk` and add this skeleton to it.
+
+    sudo gem install monk --pre
+    monk add monkex https://github.com/sinefunc/monk-experimental.git
+
+Then create an app:
+
+    monk init my_great_app -s monkex
+
 Skeleton Info
 -------------
 
